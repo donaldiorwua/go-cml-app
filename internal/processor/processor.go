@@ -16,6 +16,8 @@ func Process(text string) string {
 		words = handleCap(words)
 		words = handleLow(words)
 		words = handleUp(words)
+		words = handleCapN(words)
+		words = handleLowN(words)
 		words = handlePunctuation(words)
 		words = handleGroupPunc(words)
 		words = handleQuotes(words)
