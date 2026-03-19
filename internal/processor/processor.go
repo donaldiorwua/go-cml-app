@@ -4,7 +4,36 @@ import "strings"
 
 func Process(text string) string {
 
-	word := strings.Fields(text)
+	//text = normalizePunctuation(text)
 
-	return strings.Join(word, " ")
+	lines := strings.Split(text, "\n")
+
+	for i := range lines {
+		words := strings.Fields(lines[i])
+
+		words = Conversion(words)
+		words = handleUpN(words)
+		words = handleCap(words)
+		words = handleLow(words)
+		words = handleUp(words)
+		words = handlePunctuation(words)
+		words = handleGroupPunc(words)
+		words = handleQuotes(words)
+		words = handleGrammar(words)
+
+		lines[i] = strings.Join(words, " ")
+	}
+	result := strings.Join(lines, "\n")
+	return result
 }
+
+// func normalizePunctuation(text string) string {
+
+// 	punct := []string{".", ",", "!", "?", ":", ";"}
+
+// 	for _, p := range punct {
+// 		text = strings.ReplaceAll(text, p, " "+p+" ")
+// 	}
+
+// 	return text
+//}
