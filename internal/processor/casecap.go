@@ -8,7 +8,7 @@ func handleCap(words []string) []string {
 			// capitalize the previous word
 			word := words[i-1]
 			if len(word) > 0 {
-				words[i-1] = strings.ToUpper(string(word[0])) + strings.ToLower(word[1:])
+				words[i-1] = strings.Title(string(word))
 			}
 
 			// remove the "(cap)" token
@@ -18,5 +18,3 @@ func handleCap(words []string) []string {
 	}
 	return words
 }
-
-//

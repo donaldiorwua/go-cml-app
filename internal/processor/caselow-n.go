@@ -6,28 +6,24 @@ import (
 )
 
 func handleLowN(words []string) []string {
-	for i := 0; i < len(words); i++ {
-
-		// detect "(low," pattern
+	for i := len(words) - 1; i >= 0; i-- {
 		if words[i] == "(low," && i+1 < len(words) {
-
-			// extract number from next token e.g "2)"
 			numStr := strings.TrimSuffix(words[i+1], ")")
 			n, err := strconv.Atoi(numStr)
 			if err != nil {
 				continue
 			}
 
-			// apply lowercase to previous n words
-			for j := 1; j <= n && i-j >= 0; j++ {
-				words[i-j] = strings.ToLower(words[i-j])
+			// lowercase the n words before i
+			start := i - n
+			if start < 0 {
+				start = 0
+			}
+			for j := start; j < i; j++ {
+				words[j] = strings.ToLower(words[j])
 			}
 
-			// remove "(low," and "n)"
 			words = append(words[:i], words[i+2:]...)
-
-			// adjust index after removal
-			i--
 		}
 	}
 	return words

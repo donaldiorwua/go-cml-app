@@ -14,7 +14,9 @@ func handleGroupPunc(words []string) []string {
 	specials := []string{"...", "!?", "!!", "??"}
 	for _, sp := range specials {
 		text = strings.ReplaceAll(text, " "+sp, sp)
-		text = strings.ReplaceAll(text, "  ", " ")
+		text = strings.ReplaceAll(text, " ,", ",")
+		text = strings.ReplaceAll(text, ",", ", ")
+
 	}
 
 	// split back into words

@@ -14,10 +14,10 @@ func Process(text string) string {
 		words = Conversion(words)
 		words = handleUpN(words)
 		words = handleCap(words)
-		words = handleLow(words)
-		words = handleUp(words)
 		words = handleCapN(words)
+		words = handleLow(words)
 		words = handleLowN(words)
+		words = handleUp(words)
 		words = handlePunctuation(words)
 		words = handleGroupPunc(words)
 		words = handleQuotes(words)
@@ -28,14 +28,3 @@ func Process(text string) string {
 	result := strings.Join(lines, "\n")
 	return result
 }
-
-// func normalizePunctuation(text string) string {
-
-// 	punct := []string{".", ",", "!", "?", ":", ";"}
-
-// 	for _, p := range punct {
-// 		text = strings.ReplaceAll(text, p, " "+p+" ")
-// 	}
-
-// 	return text
-//}
